@@ -16,10 +16,26 @@ classes.forEach((e) => {
   e.addEventListener("click", () => {
     if (turn === "X") {
       e.innerHTML = "O";
+      const element = e.getAttribute("data-index");
+      oSelected.push(element);
+      console.log(oSelected);
       turn = "O";
+      checkWinner();
     } else {
       e.innerHTML = "X";
+      const element = e.getAttribute("data-index");
+
+      xSelected.push(element);
+      console.log(xSelected);
       turn = "X";
+      checkWinner();
     }
   });
 });
+function checkWinner() {
+  if (winConditions.every((element) => oSelected.includes(element))) {
+    console.log("O is winner");
+  } else {
+    console.log("X is winner");
+  }
+}
