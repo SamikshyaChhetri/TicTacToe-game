@@ -24,7 +24,6 @@ classes.forEach((e) => {
     } else {
       e.innerHTML = "X";
       const element = e.getAttribute("data-index");
-
       xSelected.push(element);
       console.log(xSelected);
       turn = "X";
@@ -33,9 +32,13 @@ classes.forEach((e) => {
   });
 });
 function checkWinner() {
-  if (winConditions.every((element) => oSelected.includes(element))) {
-    console.log("O is winner");
-  } else {
-    console.log("X is winner");
-  }
+  winConditions.forEach((condition) => {
+    if (condition.every((item) => oSelected.includes(item))) {
+      console.log("O is the winner");
+      return;
+    } else if (condition.every((item) => xSelected.includes(item))) {
+      console.log("X is the winner");
+      return;
+    }
+  });
 }
